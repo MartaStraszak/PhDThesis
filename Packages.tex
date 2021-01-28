@@ -1,0 +1,130 @@
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+%\usepackage{lmodern}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{dsfont} %zeby miec 1 dla fcji charakt
+%\usepackage{enumitem} %sterowanie wcieciem \item
+\usepackage{mathrsfs} %for mathscr
+\usepackage{color}
+\usepackage{paralist} %inparaenum - wszystkie \item w jednej linijce
+%\usepackage{enumitem} %leftmargin = wciecia w itemize
+\usepackage{bm} %bold in math mode
+\usepackage{harpoon} % robi ten herpoon - pol strzalka nad litera w gestosci soleckiego
+\usepackage{graphicx}
+%\newenvironment{myitemize}{\begin{itemize}[leftmargin=*]}{\end{itemize}
+\usepackage{float} %kotwiczenie figure [H]
+\usepackage{url}
+
+\usepackage{mathabx} % zeby robic widecheck
+
+
+\newenvironment{claim}[1]{\par\noindent\underline{Claim:}\space#1}{}
+
+
+
+\newtheorem{thm}{Theorem}
+\numberwithin{thm}{chapter}
+\newtheorem{lem}{Lemma}
+\numberwithin{lem}{chapter}
+\newtheorem{prop}{Proposition}
+\numberwithin{prop}{chapter}
+\newtheorem{cor}{Corollary}
+\numberwithin{cor}{chapter}
+
+\newtheorem{con}{Conjecture}
+\numberwithin{con}{chapter}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\numberwithin{defn}{chapter}
+\newtheorem{rem}{Remark}
+\numberwithin{rem}{chapter}
+\newtheorem{example}{Example}
+\numberwithin{example}{chapter}
+
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\mbP}{\mathbb{P}}
+
+\newcommand{\1}{\mathds{1}}
+\newcommand{\alf}{\mathscr{A}}
+\newcommand{\B}{\mathbb{B}}
+\newcommand{\mB}{\mathcal{B}}
+\newcommand{\dbar}{\bar{d}}
+\newcommand{\di}{D_P}%{\overrightarrow d}
+\newcommand{\DW}{D_W}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\Folner}{F{\o}lner }
+\newcommand{\Free}{\mathbb{F}_2}
+\newcommand{\htop}{h_\mathrm{top}}
+\newcommand{\inbrace}[1]{\left\{#1\right\}}
+\newcommand{\inparen}[1]{\left(#1\right)}
+\newcommand{\inmodul}[1]{\left|#1\right|}
+\newcommand{\insquare}[1]{\left[#1\right]}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\newcommand{\om}[1]{\hat{\omega}_{\mathcal F}({#1})}
+\newcommand\restrict[1]{\raisebox{-.5ex}{$|$}_{#1}}
+\newcommand{\Sph}{\mathbb{S}^2}
+\newcommand{\und}[1]{\underline{#1}}
+\newcommand{\closure}[1]{\overline{#1}}
+\newcommand{\Lone}[1]{L^1\left(#1\right)}
+
+\newcommand{\subord}[1]{\widecheck{#1}}
+\newcommand{\Prop}[1]{Exh({#1})}
+
+\newcommand{\elegant}{elegant }
+\newcommand{\argmax}{\operatornamewithlimits{argmax}}
+\newcommand{\defeq}{\stackrel{\textup{def}}{=}}
+
+%\DeclareMathOperator{\Bl}{\mathcal{B}}
+\DeclareMathOperator{\lang}{\mathcal{B}}%{\Bl}{\mathcal{L}}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\diam}{diam}
+%\DeclareMathOperator{\Emp}{\mathfrak{m}} %\empirical measure
+\DeclareMathOperator{\Fin}{Fin}
+\DeclareMathOperator{\F}{\mathcal{F}}
+\DeclareMathOperator{\mC}{\mathcal{C}}
+\DeclareMathOperator{\m}{\mathfrak m}
+\DeclareMathOperator{\M}{\mathcal{M}}
+\DeclareMathOperator{\Per}{Per} %Per - set of periodic points
+\DeclareMathOperator{\Pe}{\mathcal{P}} %primary period
+\DeclareMathOperator{\so}{SO(3)}
+\DeclareMathOperator{\stab}{stab}
+\DeclareMathOperator{\solr}{\overrightharp{D}}
+\DeclareMathOperator{\soll}{\overleftharp{D}}
+\DeclareMathOperator{\solt}{\overline{D}}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\cP}{\mathcal{P}}
+\DeclareMathOperator{\cK}{\mathcal{K}}
+\DeclareMathOperator{\cU}{\mathcal{U}}
+\DeclareMathOperator{\cV}{\mathcal{V}}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\ExtR}{Ext-right}
+\DeclareMathOperator{\ExtL}{Ext-left}
+\DeclareMathOperator{\ext}{Extend}
+\DeclareMathOperator{\cond}{Condense}
+\DeclareMathOperator{\Emp}{Dis}
+\DeclareMathOperator{\HD}{d_H} %Hausdorff distance
+\DeclareMathOperator{\fMG}{\M_G}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\conv}{conv}
+
+\DeclareMathOperator{\sep}{sep}
+\DeclareMathOperator{\spn}{span}
+
+\newcommand{\hsep}{h_{\mathrm{sep}}}
+\newcommand{\hspn}{h_{\mathrm{span}}}
+
+\newcommand{\dhsep}{\tilde{h}_{\mathrm{sep}}}
+\newcommand{\dhspn}{\tilde{h}_{\mathrm{span}}}
+
+\newcommand{\todo}[1]{}
+\renewcommand{\todo}[1]{{\color{red} TODO: {#1}}}
+

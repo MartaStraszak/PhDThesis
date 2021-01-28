@@ -1,0 +1,812 @@
+\chapter{Quasi-uniform Convergence}\label{chapter:q-u_convergence}
+
+In this chapter we continue the study of the Weyl pseudometric defined in Chapter~\ref{chapter:Weyl}. 
+%
+More specifically, we investigate how the convergence in this pseudometric, i.e., quasi-uniform convergence, interacts with several important objects in ergodic theory such as topological entropy, minimal subsystems and invariant measures. 
+%
+These three are studied in the subsequent Sections~\ref{section:entropy_q-u_cont}, \ref{sec:m},  \ref{section:inv_measures}.
+%
+The result of Section~\ref{section:entropy_q-u_cont} that the entropy of the subsystem $\closure{Gx}$ varies continuously with $x$ (in the case of shift spaces) is a major component in our proof of Theorem~\ref{Krieger2}.
+%
+The results of the remaining two sections are not explicitly used in other chapters but still provide an insight into the topology that the Weyl pseudometric induces and thus are interesting on their own.
+
+%------------E N T R O P Y----------------
+
+\section{Topological Entropy}\label{section:entropy_q-u_cont}
+The purpose of this section is to study the interaction between the entropy function and the Weyl pseudometric.
+%
+The results and proofs here presented are close adaptations of \cite[Section 5]{DI88}.
+%
+We divide this section into two subsections~\ref{subsection:entropy_cont_general} and \ref{subsection:entropy_cont_shif} in which we study the general case of arbitrary dynamical systems and the special case of shift spaces, for which our result is stronger.
+
+\subsection{General Dynamical Systems}\label{subsection:entropy_cont_general}
+We start by stating the general result that we intend to prove in this subsection.
+
+\begin{thm}\label{thm:entropy_semicont}
+For a dynamical system $(X,G)$, the function
+\[
+h\colon (X,D_W) \to \mathbb R_+\cup\{\infty\} ~~~~~~ \text{ satisfying } ~~~~~~ h(x) \defeq \htop(\closure{Gx})
+\]
+is lower semicontinuous, that is, for every $x\in X$ and $\eta >0$, there exists $\delta >0$ such that for every $y\in X$ satisfying $D_W(x,y)<\delta$, it holds $h(y)\geq h(x)-\eta$.
+\end{thm}
+
+\noindent The first question that arises given the above theorem is whether semicontinuity is the best one can hope for here.
+%
+The example below shows that in general the function $h$ is not continuous, on the other hand, in Subsection~\ref{subsection:entropy_cont_shif} we argue that in the case of shift spaces $h$ is continuous. 
+
+
+\begin{example}\label{entropianiejestciagla}
+In \cite[Example 3]{DI88} it is shown that the function $(X,D_W)\ni x\mapsto h(x)\in \mathbb R_+\cup\{\infty\}$ need not to be continuous even in case of $\mathbb Z$ action. We repeat this example here adjusted to the general case when $G$ is a countable amenable discrete group. 
+
+Let $X=Y^G$ for some infinite compact metric space $Y$ that has no isolated points. Let $G$ act on $X$ by the shift. Pick $y\in Y$ and $\{y_n\}_{n\in\N}\subseteq Y\setminus\{y\}$ such that $y_n\to y$ as $n\to\infty$. Let $x_n\in\{y,y_n\}^G$ be a point such that $\closure{Gx_n}=\{y,y_n\}^G$. Define $x=y^G$. Then $D_W(x,x_n)\to 0$ as $n\to\infty$, but $h(x)=0$ while for every $n\in\N$ one has $h(x_n)=\log 2$.
+\end{example}
+
+Towards the proof of Theorem~\ref{thm:entropy_semicont} we first establish an appropriate formula for the entropy that is simpler to work with than the classical definition (see Definition~\ref{def:entropy}).
+%
+\begin{defn}[$(F,\eps)$-separated and $(F,\eps)$-spanning sets]
+Let $F\in\Fin(G)$  and $\delta, \eps\in(0,1]$. Let $\rho_F(x,y)= \max\{\rho(gx,gy)\colon g\in F\}$ for $x,y\in X$. A set $Z\subseteq X$ is called:
+\begin{itemize}
+\item {\bf$\bm{(F,\eps)}$-separated} if $\rho_F(x,z)>\eps$ for $x,z\in Z$ with $x\neq z$. 
+Let $\bm{\sep(n,\eps)}$ denote the maximum cardinality of an $(F_n, \eps)$-separated set;
+\item {\bf$\bm{(F,\eps)}$-spanning} if for each $x\in X$ there is $z\in Z$ such that $\rho_F(x,z)\leq\eps$. Let $\bm{\spn(n,\eps)}$ denote the minimum cardinality of an $(F_n, \eps)$-spanning set.
+\end{itemize}
+\end{defn}
+\noindent
+Note that compactness of $X$ guarantees that both $\sep(n,\eps)$ and $\spn(n,\eps)$ are finite for every $n\in\N$ and $\eps>0$. Moreover, for every $n\in\N$ both $\sep(n,\eps)$ and $\spn(n,\eps)$ increase as $\eps$ decrease. Furthermore, it is noteworthy, that $\spn(n,\eps)\leq \sep(n,\eps)$ for every $n\in\N$ and $\eps>0$. Indeed, if $Z\subseteq X$ is maximum $(n,\eps)$-separated, then we cannot add any more point to $Z$ such that it still has the separated property. Thus for every $x\in X$ we can find $z\in Z$ such that $\rho_{F_n}(x,z)\leq \eps$, which means that $Z$ is also $(n,\eps)$-spanning. 
+
+Now, fix a \Folner sequence $\mathcal F=\{F_n\}_{n\in\N}$ and denote:
+\begin{equation}\label{eq:hsep}
+\hsep(X)\defeq\lim\limits_{\eps\searrow 0^+}\limsup\limits_{n\to\infty}\frac{\log \sep(n,\eps)}{|F_n|}
+\end{equation}
+\[
+\hspn(X)\defeq\lim\limits_{\eps\searrow 0^+}\limsup\limits_{n\to\infty}\frac{\log \spn(n,\eps)}{|F_n|}.
+\]
+The following lemma is well known in case $G=\Z$.
+\begin{lem}
+For a dynamical system $(X,G)$ it holds $\hsep(X)=\hspn(X)=\htop(X)$.
+\end{lem}
+\begin{proof}
+The proof of this lemma is a straightforward adaptation of the proof in \cite{Downarowicz11} for $G=\Z$.
+\end{proof}
+
+Next, we introduce a generalization of $(F,\eps)$-separated and $(F,\eps)$-spanning sets.
+\begin{defn}[$(F,\eps,\delta)$-separated and $(F,\eps,\delta)$-spanning sets]
+For $F\in\Fin(G)$  and $\delta, \eps\in(0,1]$ we say that $Z\subseteq X$ is:
+\begin{itemize}
+\item {\bf$\bm{(F,\eps,\delta)}$-separated} if for every $x,z\in Z$ either $x=z$ or
+\begin{equation}\label{def:sep}
+\inmodul{\inbrace{g\in F\,:\,\rho(gx,gz)>\eps}}>\delta|F|.
+\end{equation}
+Let $\bm{\sep(n,\eps, \delta)}$ denote a minimum cardinality of an $(F_n, \eps, \delta)$-separated set.
+\item {\bf$\bm{(F,\eps,\delta)}$-spanning} if for every $x\in X$ there exists $z\in Z$ such that 
+\begin{equation}\label{def:span}
+\inmodul{\inbrace{g\in F\,:\,\rho(gx, gz)\leq\eps}}\geq(1-\delta)|F|.
+\end{equation}
+Let $\bm{\spn(n,\eps,\delta)}$ denote a maximum cardinality of an $(F_n, \eps, \delta)$-spanning set.
+\end{itemize}
+\end{defn}
+\noindent
+Observe that if we put $\delta<\frac{1}{|F|}$ in formula $\eqref{def:sep}$, then we require that the set $\inbrace{g\in F\,:\,\rho(gx,gz)>\eps}$ has at least one element. This means that for $\delta<\frac{1}{|F|}$ we have $\sep(n,\eps,\delta)=\sep(n,\eps)$.    Similarly, putting $\delta<\frac{1}{|F|}$ in formula \eqref{def:span}, we require that the set $\inbrace{g\in F\,:\,\rho(gx, gz)\leq\eps}$ consists of all elements $g\in F$. Thus 
+$\delta<\frac{1}{|F|}$ implies $\spn(n,\eps,\delta)=\spn(n,\eps)$.  Moreover, for any $\delta>0$ we have $\sep(n,\eps,\delta)\leq\sep(n,\eps)$ and $\spn(n,\eps,\delta)\leq\spn(n,\eps)$.
+
+Analogously as before, for a fixed \Folner sequence $\{F_n\}_{n\in\N}$ we denote 
+\begin{equation}\label{eq:dhsep}
+\dhsep(X)\defeq\lim\limits_{\delta\searrow 0^+}\lim\limits_{\eps\searrow 0^+}\limsup\limits_{n\to\infty}\frac{\log \sep(n,\eps, \delta)}{|F_n|},
+\end{equation}
+\begin{equation}\label{eq:dhspn}
+\dhspn(X)\defeq\lim\limits_{\delta\searrow 0^+}\lim\limits_{\eps\searrow 0^+}\limsup\limits_{n\to\infty}\frac{\log \spn(n,\eps, \delta)}{|F_n|}.
+\end{equation}
+Below we show that $\dhsep(X)=\dhspn(X)=\htop(X)$. (Note that although we know that for small $\delta$ one has  $\sep(n,\eps,\delta)=\sep(n,\eps)$ and $\spn(n,\eps,\delta)=\spn(n,\eps)$, these equalities do not hold trivially, because the limits as $\delta$ approaches $0$ are the last one in both $\dhsep$ and $\dhspn$ formulas.)
+%
+This then allows us to use $\dhsep$ instead of $\htop$ in the proof of Theorem \ref{thm:entropy_semicont}.
+%
+We start by some technical lemmas, the first one is from~\cite{Shields96} and we state it without a proof.
+\begin{lem}[\cite{Shields96}, Lemma I.5.4]\label{newtSumEstim}
+Let $H(\eps)=-\eps\log \eps - (1-\eps)\log (1-\eps)$. If $\eps\in(0,\frac{1}{2})$, then
+\[
+\sum_{j=0}^{\lfloor n \eps \rfloor}{\binom{n}{j}}\le 2^{nH(\eps)} \quad\text{for $n\ge 1$}.
+\]
+\end{lem}
+\noindent
+
+
+\begin{lem}\label{hUpEstim}
+For a dynamical system $(X,G)$ one has  $\htop(X)\leq \dhspn(X)$.
+\end{lem}
+
+\begin{proof}
+Notice first that since (see Definition \ref{def:entropy})
+\[
+\htop(X)=\sup\{h(X,\mathcal U)\,:\,\mathcal U\text{ is an open cover of }X\},
+\]
+it is enough to prove that for  any finite open cover $\mathcal U$ of $X$ one has 
+\[
+h(X, \mathcal U)\leq \dhspn(X).
+\]
+Fix an open cover $\mathcal U$ of $X$ and let $2\eps_0$ be its Lebesgue number.
+Choose $\delta\in\inparen{0,\frac{1}{2}}$ and $\eps\in(0,\eps_0)$.
+We show that 
+\begin{equation}\label{e1}
+h(X,\mathcal U)\leq \limsup\limits_{n\to\infty}\frac{\log \spn(n,\eps,\delta)}{|F_n|}+ H(\delta)\log 2+\delta.
+\end{equation}
+Fix $n\in\N$. Let $Z$ be a $(F_n,\eps, \delta)$-spanning set such that $|Z|=\spn(n,\eps,\delta)$.
+For every $K\subseteq F_n$ and $y\in Z$ define 
+\[
+V(y,K)=\bigcap_{g\in K}g^{-1}\left\{a\in X : \rho(gy,a)<\eps\right\},
+\]
+Observe that $\diam gV(y,K) < 2\eps<2\eps_0$ for each $g\in K$. Thus, by the choice of $\eps$, for every $g\in K$ there exists $U_g\in \mathcal U$ such that $V(y,K)\subseteq g^{-1}U_g$. This in particular means that $V(y,K)\subseteq U$ for some $U\in  \bigvee_{g\in K}g^{-1}\mathcal U$ .
+Notice also that we can equivalently write 
+\[
+V(y,K) = \inbrace{a\in X : \forall g\in K,\, \rho(gy,ga)<\eps}.
+\]
+which implies that $\inbrace{V(y,K): y\in Z, \, K\subseteq F_n \text{ and } |K|>|F_n|(1-\delta)}$ is an open cover of $X$.
+As a consequence of these two observations, we obtain that
+\[
+\mathcal W=\bigcup_{K\subseteq F_n,\\ |K|>|F_n|(1-\delta)}\left(\inbrace{V(y,K)\,:\,y\in Z}\vee\bigvee_{g\in F_n\setminus K}g^{-1}\mathcal U\right)
+\]
+is a refinement of a cover $\mathcal U^{F_n}$.
+Hence,
+\begin{align*}
+\mathcal N\left(\mathcal U^{F_n}\right)\leq\mathcal N(\mathcal W)&\leq \big|\big\{K\subseteq F_n\,:\,|K|>|F_n|(1-\delta)\big\}\big| |Z| |\mathcal U|^{|F_n|\delta}\\
+&=\sum_{k=0}^{\lfloor |F_n|\delta\rfloor}{| F_n| \choose k}|Z| |\mathcal U|^{|F_n|\delta}\\
+&\leq 2^{|F_n|H(\delta)} \spn(n,\eps,\delta) |\mathcal U|^{|F_n|\delta}.
+\end{align*}
+This implies (\ref{e1}). Finally, observe that $H(\delta)\to 0$ as $\delta\to 0$ and thus
+\[
+h(X,\cU)\leq \lim\limits_{\delta\searrow 0^+}\lim\limits_{\eps\searrow 0^+}\limsup\limits_{n\to\infty}\frac{\log \spn(n,\eps, \delta)}{|F_n|}.\qedhere
+\]
+\end{proof}
+
+\begin{lem}
+For a dynamical system $(X,G)$ one has $\dhspn(X)=\dhsep(X)=\htop(X)$.
+\end{lem}
+
+\begin{proof}
+Let $n\in\N$, $\eps>0$ and $\delta\in(0,1]$. Notice that 
+\begin{equation}\label{lower}
+\spn(n,\eps,\delta)\leq \sep(n,\eps,\delta).
+\end{equation}
+Indeed, choose $Z\subseteq X$ to be a maximum $(n,\eps,\delta)$-separated set, that is $|Z|=\sep(n,\eps,\delta)$. By the maximality of $Z$, for any $x\in X\setminus Z$ there exists $z\in Z$ such that condition \eqref{def:sep} is not satisfied, but since \eqref{def:sep} is a negation of \eqref{def:span},  $Z$ is also $(n,\eps,\delta)$-spanning.  
+
+Now, we show that 
+\begin{equation}\label{upper}
+\sep(n,\eps,\delta)\leq \spn\inparen{n,\frac{\eps}{2}, \frac{\delta}{2}}.
+\end{equation}
+Let $Z$ be a minimum $(n,\frac{\eps}{2},\frac{\delta}{2})$-spanning set and $V$ a maximum $(n,\eps,\delta)$-separated set. We construct an injection $\varphi\colon V\to Z$. Take $v\in V$, then there exists $z\in Z$ such that  
+\begin{equation}\label{eq:injection}
+\inmodul{\inbrace{g\in F\,:\,\rho(gv, gz)\leq\frac{\eps}{2}}}\geq\inparen{1-\frac{\delta}{2}}|F|.
+\end{equation}
+Put $\varphi(v) := z$. To check that $\varphi$ is injective, assume that there are $v_1,v_2\in V$  with $v_1\neq v_2$ such that $\varphi(v_1) = \varphi(v_2)=z$ for some $z\in Z$. Denote 
+\[
+V_1 =\inbrace{g\in F\,:\,\rho(gv_1, gz)\leq\frac{\eps}{2}}, \quad 
+V_2=\inbrace{g\in F\,:\,\rho(gv_2, gz)\leq\frac{\eps}{2}}.
+\]
+Observe that 
+\[
+V_1\cap V_2\subseteq \inbrace{g\in F\,:\,\rho(gv_1, gv_2)\leq\eps},
+\]
+thus 
+\begin{equation}\label{eq:V_1V_2}
+|V_1\cap V_2|<(1-\delta)|F|.
+\end{equation}
+On the other hand, using the triangle inequality and performing some elementary set operations, 
+we obtain
+\begin{align*}
+\inmodul{\inbrace{g\in F\,:\,\rho(gv_1, gv_2)\leq\eps}}&\geq \inmodul{V_1\cap V_2} \\
+&\geq |F|-(|F|-|V_1|) - (|F|-|V_2|)  \\
+ &\stackrel{\eqref{eq:injection}}{\geq} 2\inparen{1-\frac{\delta}{2}}|F| - |F| \\
+ &=\inparen{1-\delta}|F|,
+\end{align*}
+which is a contradiction with \eqref{eq:V_1V_2}.
+Combination of (\ref{lower}) and (\ref{upper}) gives us $\dhsep(X)=\dhspn(X)$.
+Finally, using Lemma~\ref{hUpEstim} we obtain
+\[
+\htop(X)\leq \dhspn(X)=\dhsep(X)\leq \hsep(X)=\htop(X). \qedhere
+\] 
+\end{proof}
+\noindent
+For $x\in X$, $n\in\N$, $\eps>0$ and $\delta\in(0,1]$ let $\sep(x,n,\eps,\delta)$ be the maximum cardinality of $(F_n, \eps, \delta)$-separated set for $(\closure{Gx},G)$.
+
+\begin{lem}\label{l3}
+If $\eps,\delta>0$ and $x,y\in X$ are such that $D^*(\{g\in G :  \rho(gx, gy)>\eps\})<\delta$, then for all $n\in\N$ large enough one has
+\[
+\sep(y,n,\eps, \delta)\geq \sep(x, n, 3\eps, 3\delta).
+\]  
+\end{lem}
+
+\begin{proof}
+Fix $\eps,\delta>0$ and a \Folner sequence $\mathcal F=\{F_n\}_{n\in\N}$. Let $N_0\in\N$ be such that for every $n\geq N_0$  and every $g\in G$ one has
+\[
+\inmodul{\inbrace{f\in F_ng\,:\,\rho(fx, fy)>\eps}}<\delta|F_n|.
+\]
+Choose $n\geq N_0$. Denote $s:=\sep(x,n, 3\eps, 3\delta)$ and let $\{x_1,x_2,\ldots, x_s\}\subseteq\closure{Gx}$ be an $(x,n, 3\eps, 3\delta)$-separated set. 
+%
+First, we justify that we can assume that for every $ i\in\inbrace{1,2,\ldots,s}$ one has $x_i=g_ix$ for some $g_i\in G$. 
+%
+Indeed, observe that since $n$ is fixed and $F_n$ is finite, we can choose $\eta>0$ such that for every pair of distinct indices  $i, j$ it holds
+\[
+\{g\in F_n: \rho(gx_i,gx_j)>3\eps\} =  \{g\in F_n: \rho(gx_i,gx_j)>3\eps+2\eta\}.
+\] 
+%
+Thus, if $z_1,z_2,\ldots,z_s\in \closure{Gx}$ satisfy $\rho_{F_n}(z_i, x_i)<\eta$  (for $i=1,2,\ldots,s$), then the set $\{z_1,z_2, \ldots, z_s\}$ is also $(x,n, 3\eps, 3\delta)$-separated.
+
+Next, define $Y=\{y_1, \ldots, y_s\}$ by $y_i=g_i y$ for every $i\in\inbrace{1,2,\ldots,s}$. We show that $Y$ is $(y,n, \eps, \delta)$-separated.
+Notice that for any pair of distinct indices  $i, j$ one has 
+\[
+\rho(fy_j,fy_i)\geq |\rho(fy_j,fx_i)-\rho(fx_i,fy_i)|\geq \inmodul{\inmodul{\rho(fx_i,fx_j)-\rho(fx_j,fy_j)}-\rho(fx_i,fy_i)},
+\]
+which implies
+\begin{align*}
+\inmodul{\inbrace{f\in F_n\,:\rho(fy_i,fy_j)>\eps}}
+&\geq\big|\big\{f\in F_n:\rho(fy_i, fx_i)<\eps,\, \rho(fx_i, fx_j)>3\eps,\, \rho(fx_j, fy_j)<\eps\big\}\big|\\ 
+&\geq(3\delta-\delta-\delta)|F_n|=\delta|F_n|. \qedhere
+\end{align*}
+\end{proof}
+
+\noindent
+Now we have all the tools we need to prove Theorem \ref{thm:entropy_semicont}.
+
+\begin{proof}[Proof of Theorem \ref{thm:entropy_semicont}]
+Since $D_W$ and $D'_W$ are uniformly equivalent (see Theorem~\ref{uniEquivDw}), it is enough to show that $h(x)$ is lower semicontinuous with respect to $D_W'$. We use the $\dhsep$ formula (see \eqref{eq:dhsep}).
+Fix $\eta>0$ and $x\in X$ such that $h(x)<\infty$. There exists $\delta,\eps>0$ such that 
+\[
+\limsup_{n\to\infty}\frac{\log \sep(x,n,\eps, \delta)}{|F_n|}> h(x)-\eta
+\]
+ It follows from Lemma~\ref{l3} that for every $y\in X$ such that $D_W'(x,y)<\delta$ one has
+\[
+\limsup_{n\to\infty}\frac{\log \sep(y,n,\frac{\eps}{3}, \frac{\delta}{3})}{|F_n|}\geq\limsup_{n\to\infty}\frac{\log \sep(x,n,\eps, \delta)}{|F_n|}> h(x)-\eta,
+\]
+which implies $h(y)>h(x)-\eta$.
+If $h(x)=\infty$ then the proof is similar.
+\end{proof}
+
+%-------------------------- S H I F T ----------- E  N  T  R  O  P  Y  --------------------
+
+\subsection{Shift Spaces}\label{subsection:entropy_cont_shif}
+In this section we prove a strengthening of Theorem \ref{thm:entropy_semicont} that claims that the entropy function is not only lower semicontinuous but even continuous, but under the assumption that $X=\alf^G$, where $\alf$ is a finite set, and $G$ acts on $\alf^G$ by shifts. 
+\begin{thm}\label{thm:shift_entropy_cont}
+For every shift space $(\alf^G, G)$ the entropy function
+\[
+h:(\alf^G,D_W)\to \R_{+}\cup\{\infty\} ~~~~~~\text{ given by } ~~~~~~ h(x)\defeq \htop(\closure{Gx})
+\] 
+is continuous.
+\end{thm}
+\noindent 
+We note that the techniques used in the proof of the above theorem, when compared to Theorem \ref{thm:entropy_semicont}, are different.
+\noindent
+Before we proceed to the proof, we first introduce notation that allows us to state a formula for entropy that is specific for the case of $X=\alf^G$.
+
+\begin{defn}\label{def:patterns_over_F}
+For $Y\subseteq \alf^G$ and $F\in\Fin(G)$, by $\mathcal B_{F}(Y)$ we denote a collection of all patterns that appear in elements of $Y$ over all the translations of $F$. Formally, we say that $p\in \mathcal B_{F}(Y)\subseteq \alf^{F}$ if there exists $x\in Y$ and $g\in G$ such that for any $f\in F$, we have $p(f) = x(fg)$. For $x\in\alf^G$ we denote $\lang_{F}(x)\defeq\lang_{F}(\{x\})$.
+\end{defn}
+
+\noindent 
+The lemma below establishes a convenient formula for entropy in shift spaces. This Lemma is well known for the $\Z$ case, see also \cite{CC10}.
+\begin{lem}\label{lem:subshift_entropy}
+For any subshift $Y\subseteq \alf^G$ and a \Folner sequence $\{F_n\}_{n\in\N}$, one has
+\begin{equation}\label{eq:shift_entropy}
+\htop(Y)=\lim_{n\to\infty}\frac{\log|\lang_{F_n}(Y)|}{|F_n|}.
+\end{equation}
+\end{lem}
+
+\begin{proof}
+The proof is divided into two steps. 
+The first step is to show that for any shift space $Y$, the limit
+\begin{equation}\label{eq:limit}
+\lim_{n\to\infty}\frac{\log|\lang_{F_n}(Y)|}{|F_n|}
+\end{equation}
+exists and does not depend on the choice of the \Folner sequence. 
+In the second step we choose a special \Folner sequence $\F= \{F_n\}_{n\in\N}$ (that is two-sided) and show that for such $\F$ \eqref{eq:shift_entropy} holds. We remark that in the case when $G$ is abelian, the first step is not necessary because each \Folner sequence is two-sided. 
+
+\noindent
+{\bf Step 1.}
+Fix $Y$.
+To prove the existence of limit \eqref{eq:limit} and its independence of the choice of a \Folner sequence we use Lemma \ref{lem:LW}.
+Therefore, we need to show that the function $H:\Fin(G) \to [0,\infty)$ defined as 
+\[
+H( F)= \log|\mathcal B_F(Y)|
+\]
+is $G$-invariant, monotone and subadditive.
+Indeed, $G$-invariance of $H$ follows from the fact that $Y$ is a shift space. Moreover, if $F\subseteq F'$, then clearly $|\mathcal B_F(Y)|\leq |\mathcal B_{F'}(Y)|$, thus $H$ is monotone. Finally, observe that for any disjoint finite subsets $F,F'\subseteq G$, the condition 
+\[
+H(F\cup F')\leq H(F)+H(F'),
+\]
+can be equivalently written as
+\[
+|\mathcal B_{F\cup F'}(Y)|\leq |\mathcal B_F(Y)||\mathcal B_{F'}(Y)|.
+\]
+But $|\mathcal B_F(Y)||\mathcal B_{F'}(Y)|$ is the maximum possible number of patterns that can appear in $Y$ over $F\cup F'$, thus $H$ is also subadditive.
+
+\noindent
+{\bf Step 2.}
+Let $\F= \{F_n\}_{n\in\N}$ be a \Folner sequence such that $F_n = F_n^{-1}$ for every $n\in\N$ (it exists by \cite{Namioka64}).
+First, observe that the $G$-invariance of $Y$ implies that $\lang_{F}(Y)=\{y_{F}:y\in Y\}$ for every $F\in\Fin(G)$. 
+Since $G$ is countable, we can write $G=\inbrace{g_0,g_1,g_2,\ldots}$ and assume that $g_0=e$, we also use a metric on $\alf^G$ compatible with this indexing (see \eqref{eq:cantorMetric}). Denote $I_l:=\inbrace{g_0,\ldots, g_l}$ for $l\in\N$ and $S_{l,n} := F_nI_l$ for $l,n\in\N$. %Fix $l,n\in \N$ and define
+Now, define an equivalence relation on $Y$ as follows, for $F\subseteq G$ one has
+\[
+y\sim_F z \quad\text{ if and only if }\quad y_{F} = z_{F}.
+\]
+Elements of $Y/\sim_{F}$ denote by $z_{[F]}$. Finally, choose $A_{l,n}$ ($\l,n\in\N$) to be a set of representatives of $Y/\sim_{S_{l,n}}$. Thus, in other words, $A_{l,n}$ ($l,n\in\N$) is a set satisfying the following two properties:
+\begin{itemize}
+\item for every $z_{[S_{l,n}]}\in Y/\sim_{S_{l,n}}$ there is $y\in A_{l,n}$ such that $y\in z_{[S_{l,n}]}$,
+\item if $y,z\in A_{l,n}$, then $y_{[S_{l,n}]}\neq z_{[S_{l,n}]}$.
+\end{itemize}
+Notice that $A_{l,n}$ is a maximum $(n,|\alf|^{-l})$-separated set, hence $s(n,|\alf|^{-l}) = |A_{l,n}|$. We also have 
+\begin{equation}\label{eq:BFnAln}
+\mathcal B_{F_n}(Y) \subseteq \inbrace{y_{F_n}:y\in A_{l,n}} ~~~~~~\text{ for every }l,n\in\N,
+\end{equation}
+since $F_n\subseteq S_{l,n}$. Moreover, observe that since $F_n=F_n^{-1}$ for every $n\in\N$, it holds
+\begin{equation}\label{eq:symmetryF_n}
+|S_{l,n}\triangle F_n| = |(F_nI_l)^{-1}\triangle F_n^{-1}| {=}|I_l^{-1}F_n\triangle F_n|~~~~~~\text{ for every }l,n\in\N,
+\end{equation}
+Now, fix $l\in\N$ and $\eta>0$, then since $\{F_n\}_{n\in\N}$ is \Folner (see Lemma \ref{lem:Folner_inv}) there exists $N\in\N$ such that for $n>N$, one has
+\begin{equation}\label{eq:FnFolner}
+|I_l^{-1}F_n\triangle F_n|{\leq} \eta|F_n|,
+\end{equation}
+Then, combining \eqref{eq:BFnAln}, \eqref{eq:symmetryF_n} and \eqref{eq:FnFolner}, we obtain that for every $n>N$ it holds
+\[
+|\mathcal B_{F_n}(Y)|\leq |A_{l,n}|\leq |\mathcal B_{F_n}(Y)||\alf|^{|S_{l,n}\triangle F_n|}\leq |\mathcal B_{F_n}(Y)||\alf|^{\eta|F_n|},
+\]
+which implies
+\[
+\limsup_{n\to\infty}\frac{\log|\mathcal B_{F_n}(Y)|}{|F_n|}\leq\lim_{l\to\infty}\limsup_{n\to\infty} \frac{\log|A_{l,n}|}{|F_n|}\leq \limsup_{n\to\infty}\frac{\log|\mathcal B_{F_n}(Y)|}{|F_n|} + \eta\log|\alf|.
+\]
+Therefore, since $\eta$ was arbitrary, we obtain
+\[
+\htop(Y)=\limsup_{n\to\infty}\frac{\log|\lang_{F_n}(Y)|}{|F_n|}. \qedhere
+\]
+\end{proof}
+
+\noindent
+As a corollary we obtain the following
+\begin{lem}\label{entropyAdoG}
+For any $x\in\alf^G$ and a \Folner sequence $\{F_n\}_{n\in\N}$, 
+\begin{equation}\label{eq:entropyB_Fn}
+h(x)=\lim_{n\to\infty}\frac{\log|\lang_{F_n}(x)|}{|F_n|}.
+\end{equation}
+\end{lem}
+
+\noindent
+Notice that the above lemma implies that $h(x)\leq\log|\alf|$ for any $x\in\alf^G$.
+
+
+
+\begin{proof}[Proof of Theorem \ref{thm:shift_entropy_cont}]
+We consider two points from $\alf^G$ that are $D^*$-close and estimate their entropy using formula \eqref{eq:entropyB_Fn}.
+
+Let $\F=\{F_n\}_{n=1}^\infty$ be a \Folner sequence and $\eps>0$.
+Pick $\delta\in(0,\frac{1}{2})$ so that $t<\delta$ implies $H(t)<\eps$. Notice that if $x,z\in \alf^G$ satisfy
+$D^*(x,z)<\delta$, then for all $g\in G$ and all $n\in\N$ large enough we have
+\[
+|\{f\in F_n : x_{fg}\neq z_{fg}\}|<\delta |F_n|.
+\] 
+By Lemma~\ref{newtSumEstim} we have that for all $n\in\N$ large enough
+\begin{equation*}
+|\lang_{F_n}(z)|\leq |\lang_{F_n}(x)||\alf|^{\delta|F_n|}\sum_{k=0}^{\lfloor \delta n\rfloor}{|F_n|\choose k} 
+\leq|\alf|^{\delta|F_n|} 2^{H(\delta) |F_n|} |\lang_{F_n}(x)|.
+\end{equation*}
+Thus, using formula \eqref{eq:entropyB_Fn}, we obtain
+\[
+h(z)\leq \delta\log{|\alf|}+H(\delta)\log 2+h(x).
+\]
+Interchanging the roles of $x$ and $z$ finishes the proof.
+\end{proof}
+
+
+
+%------------------------ m ( x ) ----------------------
+
+\section{The Number of Minimal Components of ${\closure{Gx}}$}\label{sec:m}
+
+Recall that by $m(x)\in\N\cup\{\infty\}$ we denote the number of minimal components of $\closure{Gx}$. Our aim is to prove that $m$ is lower semicontinuous with respect to $D_W$, which generalizes \cite[Theorem 1]{DI88}.
+
+\begin{thm}\label{thm:mxCont}
+The function $(X,D_W)\ni x \mapsto m(x)\in \mathbb N\cup\{\infty\}$ is lower semicontinuous.
+\end{thm}
+
+\begin{proof}
+Fix $x\in X$. Choose minimal sets $Z_1,\ldots, Z_{m(x)}\subseteq \closure{Gx}$ and $\eps>0$ such that $\dist(Z_i,Z_j)>2\eps$ whenever $i\neq j$. Fix $y\in X$ with $D_W'(x,y)<\frac{\eps}{6}$, we show that $m(y)\geq m(x)$. Let $\{F_n\}_{n\in\N}$ be a F{\o}lner sequence and let $Z(y)=\{z_1,\ldots, z_{m(y)}\}\subseteq \closure{Gy}$ be the set of points generating minimal subsystems in $\closure{Gy}$, that is, $\closure{Gz_i}$ is a minimal subsystem in $\closure{Gy}$ for every $i=1,2,\ldots,m(y)$ (see Theorem~\ref{thm:minimal-synd}). 
+Now, suppose that the following claim holds.
+\begin{claim}
+There exists $N\in\N$ such that for every $k\in\{1,2,\ldots,m(x)\}$, there exists $r(k)\in\{1,2,\ldots,m(y)\}$ such that  more  than half of elements $f\in F_N$ satisfy
+\[
+\dist(fz_{r(k)}, Z_k)< \eps.
+\]
+\end{claim}
+
+From this claim, it follows that for any distinct $k,l\in\{1,2,\ldots,m(x)\}$ we can find $f\in F_N$ such that
+\[
+\dist(fz_{r(k)}, Z_k)< \eps \quad \text{ and }\quad \dist(fz_{r(l)}, Z_l)<\eps.
+\]
+Therefore, since $\dist(Z_k,Z_l)>2\eps$, we have $r(k)\neq r(l)$ and hence $m(y)\geq m(x)$.
+
+It remains to prove the Claim. The inequality $D_W'(x,y)<\frac{\eps}{6}$ implies that there exists $N\in\N$ such that for every $g\in G$ one has 
+\begin{equation}\label{eq:klocek1}
+\inmodul{\inbrace{f\in F_Ng\,:\,\rho(fx, fy)>\frac{\eps}{6}}}<\frac{\eps}{6}|F_N|<\frac{1}{2}|F_N|.
+\end{equation}
+Next, we choose $\delta\in(0,\frac{\eps}{3})$ such that if $a,b\in X$ satisfy $\rho(a,b)<2\delta$, then $\rho(fa, fb)<\eps/3$ for every  $f\in F_N$. Fix $k=1,2,\ldots,m(x)$. Then $N(x, Z_k^{\delta})\cap N(y, Z(y)^{\delta})\neq\emptyset$ (Lemma \ref{lem:minimalthick} and Lemma \ref{lem:syndetic-thick}). Hence there exist $g(k)\in G$ and $r(k)=1,2,\ldots,m(y)$ such that 
+\begin{equation}\label{eq:klocek2}
+g(k)x\in Z_k^{\delta}\quad \text{ and }\quad \rho(g(k)y,z_{r(k)})<\delta.
+\end{equation}
+Finally, keeping in mind that $gZ_k\subseteq Z_k$ for every $g\in G$ and combining (\ref{eq:klocek1}) and (\ref{eq:klocek2}), we get that for more than the half of elements $f\in F_N$ one has 
+\[
+\dist(fz_{r(k)}, Z_k)\leq \rho(fz_{r(k)},fg(k)y)+\rho(fg(k)x,fg(k)y)+\dist (fg(k)x, Z_k)<\eps.\qedhere
+\]
+\end{proof}
+
+\begin{rem}
+Note that the example presented in Remark~\ref{entropianiejestciagla} shows that there is a $G$ action such that $m$ is not $D_W$-continuous. Such a system exists for every countable amenable group $G$ (cf. \cite[ Example 2]{DI88}).
+\end{rem}
+
+%----------------------------       M  _  G  (  x   )        ----------------------------------------
+
+\section{Invariant Measures}\label{section:inv_measures}
+
+Before we state Theorem \ref{MGx_u-c} that is the main result of this section let us first introduce some useful notation and  basic facts about measures.
+First recall that the space $\M(X)$ (of all Borel probability measures on $X$) equipped with the weak-$\star$ topology is metrizable with the {\bf Prokhorov metric} (see \cite{Billingsley68}) given by
+\[
+\di(\mu,\nu)=\inf\{\eps>0\,:\,\forall B\in\mathcal{B}(X)\quad\mu(B)\leq\nu(B^{\eps})+\eps \text{ and } \nu(B)\leq\mu(B^{\eps})+\eps\},
+\]
+where as usual $B^{\eps}$ denotes the $\eps$-hull of a set $B\subseteq X$, that is, 
+\[
+B^{\eps}=\inbrace{y\in X\,:\,\exists x\in B~~\rho(x,y)< \eps}.
+\]
+Therefore $(\M(X), \di)$ is a compact metric space. This allows us to define the Hausdorff metric $\HD$ on nonempty compact subsets of $\M(X)$, i.e., for any nonempty compact sets $A,B\subseteq\M(x)$ we have
+\[
+\HD(A,B)= \inf\inbrace{\eps>0:A\subseteq B^{\eps} \text{ and } B\subseteq A^{\eps}},
+\]
+or equivalently
+\[
+\HD(A,B)= \max\inbrace{\sup_{\mu\in A}\inf_{\nu\in B}\di(\mu, \nu), \sup_{\nu\in B}\inf_{\mu\in A} \di(\mu, \nu)}.
+\]
+\noindent 
+Next we define the main subject of study in this section, i.e., $G$-invariant measures.
+
+\begin{defn}[$G$-invariant measure]
+A measure $\mu\in\M(X)$ is {\bf ${\bm G}$-invariant} if for every $g\in G$ it holds
+\[
+\mu(B)=\mu(gB)~~~~~~ \text{ for every }B\in \mathcal{B}(X).
+\]
+By ${\M_G(X)}$ we denote the set of all $G$-invariant measures on $X$.
+\end{defn}
+\noindent
+Below we prove an important lemma that serves as the main tool for constructing invariant measures. In particular, it implies the generalized Kryloff-Bogoliouboff theorem which states that the set $\M_G(X)$ is non-empty.
+%
+We adapt the proof from \cite{EW10} to the case of arbitrary groups.
+\begin{lem}\label{lem:invariantMeasure}
+Let $G$ be a countable amenable group that acts on a compact metric space $X$ continously. Let $\{\nu_n\}_{n\in\N}$ be any sequence in $\mathcal M(X)$ and let $\{F_n\}_{n\in\N}$ be a \Folner sequence in $G$. Then any weak$^*$-limit point of the sequence $\{\mu_n\}_{n\in\N}$ defined by
+\[
+\mu_n = \frac{1}{|F_n|}\sum_{g\in F_n}g_*\nu_n
+\]
+is a member of $\mathcal M_G(X)$.
+\end{lem}
+
+\begin{proof}
+Let $\mu$ be a weak$^*$-limit point of $\{\mu_n\}_{n\in\N}$. Fix $\varphi\in\mathcal C(X)$ and $g\in G$. We need to prove that 
+\[
+\int g\cdot \varphi d\mu = \int \varphi d\mu,
+\]
+where $(g\cdot\varphi)(x) \defeq \varphi(g x)$ for $x\in X$ (see Definition \ref{def:induced_group_action}).
+Since for any $n\in\N$ we have
+\[
+\inmodul{\int g\cdot \varphi d\mu - \int \varphi d\mu} \leq 
+\inmodul{\int g\cdot \varphi d\mu - \int g\cdot\varphi d\mu_n} +
+\inmodul{\int g\cdot \varphi d\mu_n - \int \varphi d\mu_n} +
+\inmodul{\int  \varphi d\mu_n - \int \varphi d\mu} ,
+\]
+it is enough to show that 
+\[
+\inmodul{\int g\cdot \varphi d\mu_n - \int \varphi d\mu_n}\to 0 \quad (n\to\infty).
+\]
+Indeed,
+\begin{align*}
+\inmodul{\int g\cdot \varphi d\mu_n - \int \varphi d\mu_n}&= 
+\frac{1}{|F_n|}\inmodul{\sum_{h\in F_n}\int g\cdot \varphi dh_*\nu_n - \sum_{h\in F_n}\int \varphi dh_*\nu_n} \\
+&=\frac{1}{|F_n|}\inmodul{\sum_{h\in F_n}\int h\cdot(g\cdot \varphi) d\nu_n - \sum_{h\in F_n}\int h\cdot \varphi d\nu_n}\\
+&=\frac{1}{|F_n|}\inmodul{\sum_{h\in F_n}\int (gh)\cdot \varphi d\nu_n - \sum_{h\in F_n}\int h\cdot \varphi d\nu_n}\\
+&=\frac{1}{|F_n|}\inmodul{\sum_{h\in gF_n}\int h\cdot \varphi d\nu_n - \sum_{h\in F_n}\int h\cdot \varphi d\nu_n}\\
+&\leq\frac{1}{|F_n|}\sum_{h\in gF_n \Delta F_n}\inmodul{\int h\cdot \varphi d\nu_n} \\
+&\leq\frac{\inmodul{gF_n\Delta F_n}}{|F_n|}\|\varphi\|_{\infty}. 
+\end{align*}
+Since $\{F_n\}_{n\in\N}$ is a \Folner sequence, we have
+\[
+\lim_{n\to\infty}\frac{\inmodul{gF_n\Delta F_n}}{|F_n|}= 0.
+\]
+Further $\|\varphi\|_{\infty}<\infty$ since $\varphi$ is a continuous function on a compact space. The lemma follows.
+\end{proof}
+\noindent The fact that $\M_G(X)$ is non-empty follows now from the compactness of $\M(X)$.
+%
+We are now ready to state the main result of this section.
+
+\begin{thm}\label{MGx_u-c}
+For a dynamical system $(X,G)$, the function 
+\[
+\fMG\colon (X,D_W)\to (2^{\M(X)},\HD) ~~~~~~\text{ given by }~~~~~~ \fMG(x) = \M_G(\closure{Gx})
+\] 
+is uniformly continuous.
+\end{thm}
+
+\noindent
+Before we present the proof of Theorem \ref{MGx_u-c}, we discuss its corollary.
+\begin{cor}
+The number of ergodic\footnote{Recall that $\mu\in\M_G(X)$ is ergodic if $gB=B$ implies $\mu(B)=1$ or $\mu(B)=0$ for every $B\in\mB(X)$ and $g\in G$.} invariant measures supported at $\closure{Gx}$ is lower semicontinuous with respect to $D_W$.
+\end{cor}
+
+\begin{proof}
+Note first that since ergodic invariant measures are extreme points of $\M_G(X)$, it is just enough to show that the number of extreme points of a compact convex subset of a compact space varies lower semicontinuously with respect to $\HD$. To see this assume that $K_n\subseteq \M_G(X)$ for $n\in\N$ and $K\subseteq \M_G(X)$ are compact, convex sets such that $K_n \to K$ in the Hausdorff metric.
+%
+For every $n\in\N$ denote by $s_n$ the number of extreme points of $K_n$ and let $s$ denote the number of extreme points $K$.
+%
+We can assume that $\liminf\limits_{n\to\infty}s_n=m$ for some $m\in\N$ as the case $m=\infty$ is easy to deal with.
+%
+Let $(l_n)_{n\in N}$ be a sequence of indices such that $l_n \to \infty$ and $s_{l_n}=m$ for all $n\in \N$.
+
+For every $n\in\N$ let $V_n:=\{v_1^n,\ldots, v_m^n\}\subseteq K_{l_n}$ be the set of extreme points of $K_{l_n}$, i.e.,  $\conv(V_n)=K_{l_n}$, where $\conv(V_n)$ denotes the convex hull of $V_n$.
+%
+We can assume (restricting to a subsequence if necessary) that for every $1\leq i\leq m$ one has $v_i^n\to v_i$ for some $v_i\in K$. We show that $\text{conv}\{v_1,\ldots, v_m\}=K$. To this end fix $x\in K$. For $1\leq i\leq m$ and $n\in\N$ pick $\alpha^{(n)}_m\in[0,1]$ such that:
+\begin{itemize}
+\item for every $n\in\N$ one has $\alpha_1^{(n)}+\ldots+\alpha_m^{(n)}=1$,
+\item $\alpha_1^{(n)}v_1^{n}+\ldots+\alpha_m^{(n)}v_m^{n}\to x$ as $n\to\infty$.
+\end{itemize}
+By restricting to a subsequence, we can assume for every $i=1,2,\ldots,m$ we have $\alpha_i^{(n)}\to\alpha_i$ for some $\alpha_i\in[0,1]$. Then
+$\alpha_1+\ldots+\alpha_m=1$ and $\alpha_1s_1+\ldots+\alpha_ms_m=x$.
+This finishes the proof.
+\end{proof}
+\noindent 
+Before we proceed with the proof of Theorem \ref{MGx_u-c}, we define a family of measures
+ that allows us to characterize the collection of $G$-invariant measures.
+\begin{defn}
+The {\bf empirical measure} $\m(\und x, F)\in\M(X)$ of an element $\und x\in X^G$ with respect to a finite set $F\subseteq G$ is given by
+\[
+\m(\und x, F)\defeq\frac{1}{|F|}\sum_{g\in F} {\delta}_{\und x(g)}.
+\]
+A measure $\mu\in \M(X)$ is a {\bf distribution measure} for $\und x\in X^G$ and a \Folner seqence $\F=\{F_n\}_{n\in\N}$ if $\mu$ is a limit point of the sequence
+$\{\m(\und{x},F_n)\}_{n\in\N}$. The set of all distribution measures of $\und{x}$ along $\mathcal F$ is denoted by $\Emp_{\F}({\und{x}})$ and the set of all distribution measures of $\underline{x}$ we define as
+\[
+\Emp(\und x)\defeq\bigcup_{\mathcal F}\Emp_{\F}\inparen{\und x}.
+\]
+For $x\in X$ we put $\Emp_{\F}\inparen{x}\defeq\Emp_{\F}\inparen{\und x_G}$ and $\Emp(x)\defeq\Emp(\und x_G)$.
+\end{defn}
+\noindent
+Note that $\Emp_{\F}\inparen{\und{x}}$ is a closed and nonempty subset of $\M(X)$ for every \Folner sequence $\F$. 
+%
+Now, observe that Theorem \ref{MGx_u-c} is a straightforward consequence of the following two lemmas.
+%
+\begin{lem}\label{lem:MGx-Emp}
+For every $x\in X$, the set $\Emp(x)$ is compact and one has
+$\mathcal{M}_G(x)=\Emp(x)$.
+\end{lem}
+
+\begin{lem}\label{lem:Emp_cont}
+The function $\Emp\colon (X,D_W)\to (2^{\M(X)},\HD)$ is uniformly continuous.
+\end{lem}
+
+
+
+\noindent The proofs of the above lemmas are completely independent of each other and are established in the two subsequent sections.
+
+
+
+\subsection*{Proof of Lemma \ref{lem:MGx-Emp}} 
+
+We start with the proof of the first part of Lemma \ref{lem:MGx-Emp}.
+
+\begin{lem}\label{domk}
+For any $x\in X$ the set $\Emp(x)$ is compact.
+\end{lem} 
+
+\begin{proof}
+Fix $x\in X$, we just need to prove that $\M_G(x)$ is closed.
+%
+Pick $\{\mu_k\}_{k\in\N}\subseteq\Emp(x)$ such that $\mu_k\to\mu$ as $k\to\infty$ for some $\mu\in\M(X)$. We show that $\mu\in\Emp(x)$.
+%
+For every $k\in\N$ let $\mathcal F^{(k)}=\{F^{(k)}_n\}_{n\in\N}$ be a \Folner sequence such that $\m(x,F^{(k)}_n)\to\mu_k$ as $n\to\infty$.
+%
+Enumerate elements of $G$ as $g_1,g_2,\ldots$.
+%
+For every $k\in\N$ choose $n_k \in\N$ such that 
+\[
+\di\left(\m(x,F^{(k)}_{n_k}),\mu_k\right)<\frac{1}{k}
+\]
+and for every $i\leq k$ one has 
+\[
+\frac{\inmodul{g_i F_{n_k}^{(k)}\triangle F_{n_k}^{(k)}}}{\inmodul{F_{n_k}^{(k)}}}<\frac1k .\]
+%
+Define $\mathcal F=\{F_{n_k}^{(k)}\}_{k\in\N}$. Then $\mathcal F$ is a \Folner sequence and $\Emp_{\F}(x)=\{\mu\}$. 
+\end{proof}
+\noindent 
+In the proof of the second part of Lemma \ref{lem:MGx-Emp} we use Lemma \ref{lem:all_generic_points} that is a straightforward consequence of the Pointwise Ergodic Theorem for amenable groups (for a proof of the latter result we refer to~\cite{Lindenstrauss01}). To state it we need to define a special class of \Folner sequences.
+
+\begin{defn}[Tempered \Folner sequence]
+A \Folner sequence $\{F_n\}_{n\in\N}$ in $G$ is {\bf tempered} if there exists a constant $C>0$ such that for every $n\in \N$ it holds
+\[
+\inmodul{ \bigcup_{k<n}F_k^{-1}F_n}\leq C\inmodul{F_n}.
+\]
+\end{defn}
+\noindent 
+It is proved in \cite{Lindenstrauss01} that every \Folner sequence has a tempered subsequence, which in particular means that every amenable group has a tempered \Folner sequence. 
+
+
+\begin{thm}[Pointwise Ergodic Theorem \cite{Lindenstrauss01}]\label{thm:PET}
+Let $\{F_n\}_{n\in\N}$ be a tempered \Folner sequence in $G$ and $\mu\in\M_G(X)$. Then for every function $\phi\in\Lone{\mu}$, there exists a $G$-invariant function $\phi^\star\in\Lone{\mu}$ satisfying
+\[
+\lim_{n\to\infty}\frac{1}{|F_n|}\sum_{g\in F_n}\phi(gx)=\phi^\star(x) ~~~~~~\mbox{$\mu$-almost everywhere}.
+\]
+Moreover, if $\mu$ is ergodic,
+then 
+\[
+\phi^\star(x) = \int_X \phi d\mu ~~~~~~\mbox{$\mu$-almost everywhere}.
+\]
+\end{thm}
+
+\noindent
+As a corollary we will obtain Lemma \ref{lem:all_generic_points}, which claims existence of generic points. To state it, we need the following definition:
+\begin{defn}[Generic point]
+Let  $\F=\{F_n\}_{n\in\N}$ be a \Folner sequence and let $\mu\in\M_G(X)$ be an ergodic measure. A point $x\in X$ is {\bf generic} for $\mu$ along $\F$ if for every continuous function $\phi\in \R^X$ one has
+\[
+\lim_{n\to\infty}\frac{1}{|F_n|}\sum_{g\in F_n} \phi(gx) = \int_X\phi d\mu,
+\]
+in other words
+\[
+\lim_{n\to \infty} \m(x, F_n) = \mu.
+\]
+\end{defn}
+
+\begin{lem}\label{lem:all_generic_points}
+If $\F$ is a tempered \Folner sequence in $G$ and  $\mu\in\M_G(X)$ is ergodic, then $\mu$-almost every point $x\in X$ is generic for $\mu$ along $\F$.
+\end{lem}
+\begin{proof}
+This is a straightforward consequence of Pointwise Ergodic Theorem (see Theorem \ref{thm:PET}).
+\end{proof}
+
+\noindent
+Note that by Lemma \ref{lem:all_generic_points}, for every ergodic measure $\mu\in\M_G(X)$, there exists a generic point $x\in X$ such that $x\in \supp(\mu)$ 
+%
+(where $\supp(\mu)$ denotes the support of $\mu$, that is, the set of all points $x\in X$ such that for every open set $U\subseteq X$ with $x\in U$, one has $\mu(U)>0$).
+%
+Indeed, this follows from the fact that both those sets, $\supp(\mu)$ and the set of generic points for $\mu$, are of measure $1$.
+
+
+%----------------------------------------------------------------
+
+
+To proceed we need the following three simple lemmas, we provide proofs for the sake of completeness. 
+
+\begin{lem}\label{lem:infinitely_many_g_for_x_generic}
+Let $x\in X$ and $Z= \closure{Gx}$. Take an ergodic measure $\mu\in\M_G(Z)$ and choose its generic point $z\in \supp (\mu)$. Then for every open neighborhood $U\subseteq Z$ of $z$ there exists infinitely many elements $g\in G$ such that $gx\in U$.
+\end{lem}
+
+\begin{proof}
+Fix  an open neighborhood $U\subseteq Z$ of $z$, without loss of generality $U$ is an open ball of radius $\eps>0$ around $z$. 
+%
+Assume first that $z=g_0x$ for some $g_0\in G$. Since $z\in\supp(\mu)$ and $U$ is open, we have $\mu(U)>0$. 
+%
+But $z$ is generic for $\mu$, hence there must be infinitely many $g\in G$ such that $gz\in U$.
+
+If $z\notin Gx$, then there exists a sequence $\{g_n\}_{n\in \N}\subseteq G$ such that $\lim_{n\to\infty} g_nx = z$ and $g_nx \neq z$ for every $n\in \N$.
+%
+By taking a subsequence, we might assume that $\rho(g_nx, z)<\eps$ for every $n\in \N$ and $\rho(g_nx, z)$ is strictly decreasing with $n$. It follows that all $g_n$'s are pairwise distinct and $g_n x\in U$ for every $n\in \N$.
+\end{proof}
+
+\begin{lem}\label{szac2}
+Let $F\in\Fin(G)$ and $x,z\in X$. If for every $f\in F$ one has $\rho(fx, fz)\leq~\eps$, then $\di(\m(x, F), \m(z,F))\leq\eps$.
+\end{lem}
+
+\begin{proof}
+Take any Borel set $B\subseteq X$ and any $\eps>0$.
+By the assumption we have
+\[
+\inmodul{\inbrace{f\in F:fx\in B}}\leq\inmodul{\inbrace{f\in F:fz\in B^{\eps}}},
+\]
+which implies
+\[
+\frac{1}{|F|}\inmodul{\inbrace{f\in F:fx\in B}}\leq\frac{1}{|F|}\inmodul{\inbrace{f\in F:fz\in B^{\eps}}}+\eps.
+\]
+Therefore $\m(x,F)(B)\leq \m(y,F)(B^{\eps})+\eps$. Interchanging the role of $x$ and $z$ we obtain the claim.
+\end{proof}
+
+\begin{lem}\label{szac}
+Let $\alpha_1,\ldots,\alpha_k \in[0,1]$ be  such that $\sum_{i=1}^k\alpha_i=1$.
+%
+Then for all $\mu_1,\ldots,\mu_k,\nu_1,\ldots,\nu_k\in\mathcal M(X)$ one has 
+$$\di\left(\sum_{i=1}^k\alpha_i\mu_i,\sum_{i=1}^k\alpha_i\nu_i\right)\leq \max\big\{\di(\mu_i,\nu_i)\,:\,1\leq i\leq k\big\}.$$
+\end{lem}
+\begin{proof}
+Suppose that $\di(\mu_i, \nu_i)\leq \eps$ for some $\eps\geq 0$ and every $i=1,2, \ldots, k$. Then, for every Borel set $B\subseteq X$, we have
+\begin{align*}
+\inparen{\sum_{i=1}^k\alpha_i\mu_i}(B) &=\sum_{i=1}^k \alpha_i \mu_i(B) \\
+& \leq \sum_{i=1}^k \alpha_i(\nu_i(B^\eps)+\eps)\\ 
+&= \inparen{\sum_{i=1}^k \alpha_i \nu_i}(B^\eps) + \eps.
+\end{align*}
+By exchanging the roles of $\mu$'s and $\nu$'s, we arrive at the claim.
+\end{proof}
+
+\begin{proof}[Proof of Lemma~\ref{lem:MGx-Emp}]
+It is obvious that $\Emp(x)\subseteq\mathcal{M}_G(x)$. 
+Fix $\mu\in \mathcal{M}_G(x)$ and a tempered \Folner sequence $\mathcal F=\{F_n\}_{n\in\N}$.
+From the Krein-Milman theorem we know that $\mu$ belongs to the closure of the convex hull of all extreme points of $\mathcal{M}_G(x)$. 
+%
+Since the extreme points of $\M_G(x)$ are exactly the ergodic measures $\M_G^e(\closure{Gx})$, we can express $\mu$ as a limit of the form
+\[
+\mu=\lim_{n\to\infty} \frac{1}{L_n} \sum_{i=1}^{L_n} \nu_i^{(n)},
+\]
+ where for each $n\in\N$, $L_n$ is a natural number and for $i\in\{1,2,\ldots,L_n\}$ one has $\nu_{i}^{(n)}\in\M^e_G(\closure{Gx})$ (the~measures $\nu_{i}^{(n)}$ need not to be pairwise different).
+ %
+ 
+Since the set $\Emp(x)$ is closed (by Lemma~\ref{domk}), it is enough to prove the following general statement: for every sequence of ergodic measures $\nu_1, \nu_2, \ldots, \nu_N$ and for every $\eps>0$ there exists a \Folner sequence $\mathcal F_{\eps}=\{F_{k,\eps}\}_{k\in\N}$ such that for every $k\in\N$ large enough one has
+\[
+\di\left(\frac{1}{N} \sum_{i=1}^{N} \nu_i,\, \m\left(x, F_{k,\eps}\right)\right)<\eps.
+\]
+For $i=1,2,\ldots,N$ let $x_i\in\supp(\nu_i)$ be a generic point for $\nu_i$ along $\mathcal F$ (see Lemma~\ref{lem:all_generic_points}), i.e., $\lim_{k\to \infty} \m(x_i, F_k) = \nu_i$.
+%
+From now on, we assume that $k$ is large enough so that
+for every $i\in\{1,2, \ldots, N\}$ it holds
+\[
+\di\left(\nu_i, \m(x_i, F_k)\right)<\frac{\eps}{2}.
+\]
+Let $\delta>0$ be such that if $f\in F_k$, $a,b\in X$ and $\rho(a,b)<\delta$ then $\rho(fa, fb)<\frac{\eps}{2}$.
+%
+
+We claim that there exist $g_1^{(k)}, g_2^{(k)}, \ldots, g_N^{(k)}\in G$ such that:
+\begin{enumerate}
+\item for every $i\in\{1,2, \ldots, N\}$ it holds $\rho(g_i^{(k)} x, x_i)<\delta$,
+\item the sets $F_k g_1^{(k)}, F_k g_2^{(k)}, \ldots, F_kg_N^{(k)}$ are pairwise disjoint.
+\end{enumerate}
+The claim simply follows from the fact that for every $i\in\{1,2, \ldots, N\}$ there are infinitely many $g\in G$ such that $\rho(gx, x_i)<\delta$ (see Lemma~\ref{lem:infinitely_many_g_for_x_generic}). 
+
+
+Now, Lemma~\ref{szac} combined with Lemma~\ref{szac2} imply
+\begin{equation}\label{eq:conv_comb_emp}
+\di\inparen{\frac{1}{N}\sum_{i=1}^N \nu_i, \frac{1}{N} \sum_{i=1}^N \m(x, F_kg_i^{(k)})}\leq \max_{1\leq i\leq N} \di(\nu_i, \m(x, F_kg_i^{(k)})) \leq \eps.
+\end{equation}
+It remains to observe that the sequence $\F_{\eps} = \{F_{\eps,k}\}_{k=1}^{\infty}$ given by
+\[
+F_{\eps, k}\defeq \bigsqcup_{i=1}^N F_k g_i^{(k)},
+\]
+is a \Folner sequence and we have
+\[
+\frac{1}{N} \sum_{i=1}^N \m(x, F_kg_i^{(k)}) = \m(x, F_{\eps, k}),
+\]
+which combined with \eqref{eq:conv_comb_emp} concludes the proof.
+\end{proof}
+
+\subsection*{Proof of Lemma \ref{lem:Emp_cont}} 
+
+The following lemma is the basic component of the proof of Lemma \ref{lem:Emp_cont}.
+
+\begin{lem}\label{lem:Dw-Dp}
+For every $\und x,\und z\in X^G$ and for every $\mu \in \Emp(x)$ there exists $\nu \in \Emp(z)$ with $\di(\mu,\nu)\leq D_W(\und x,\und z)$.
+\end{lem}
+\begin{proof}
+Denote $\eps:=D_W(\und x, \und z)$.
+%
+Take any $\mu \in \Emp(x)$. There exists a \Folner sequence $\F = \{F_n\}_{n \in \N}$ such that
+\[\mu=\lim_{n\to\infty}\m(\und{x},F_{n}).\]
+Let $\nu \in \Emp_{\F}(z)$ be arbitrary, we a can assume, by passing to a subsequence if necessary that
+\[\nu=\lim_{n\to\infty}\m(\und{z},F_{n}).\]
+Recall that by Lemma \ref{lem:Dw_is_supDB} we have $D_W=\sup_{\F}D_{B,\F}$, hence in particular $D_{B,\F}(x,z)\leq \eps$.
+%
+ This means that there exists $n\in\N$ such that for $n>N$, one has
+\begin{equation}\label{eq:DBxz}
+\inmodul{\inbrace{g\in F_n:\rho(\und x(g),\und z(g))\geq\eps}}<\eps|F_n|.
+\end{equation}
+Let $B\in\mB(X)$. We show that $\mu(B)\leq \nu(B^{\eps})+\eps$. Notice that it is enough to prove that for $n\in\N$ large enough, we have
+\[
+\m(\und{x},F_{n})(B)\leq \m(\und{z},F_{n})(B^{\eps})+\eps.
+\]
+For $n>N$, by \eqref{eq:DBxz} we obtain
+\begin{align*}
+&\m(\und{x},F_{n})(B) = \frac{\inmodul{\inbrace{g\in F_n: \und x(g)\in B }}}{|F_n|}\\
+&= \frac{\inmodul{\inbrace{g\in F_n: \und x(g)\in B  \mbox{ and } \rho(\und x(g),\und z(g))<\eps}}}{|F_n|} +\frac{\inmodul{\inbrace{g\in F_n: \und x(g)\in B \mbox{ and } \rho(\und x(g),\und z(g))\geq\eps } }}{|F_n|}\\
+&\leq \frac{\inmodul{\inbrace{g\in F_n: \und z(g)\in B^{\eps} }}}{|F_n|} + \eps = \m(\und{z},F_{n})(B^{\eps})+\eps.
+\end{align*}
+Interchanging the roles of $\mu$ and $\nu$ we obtain $\nu(B)\leq \mu(B^{\eps})+\eps$, and hence $\di(\mu,\nu)<\eps$.
+\end{proof}
+
+\noindent
+The proof of Lemma \ref{lem:Emp_cont} now follows easily.
+
+\begin{proof}[Proof of Lemma \ref{lem:Emp_cont}]
+It follows straight from the definition of Hausdorff distance and Lemma~\ref{lem:Dw-Dp} that the $\Emp$ function is Lipschitz-continuous with the Lipschitz constant $1$, and thus uniformly continuous.
+\end{proof}
+

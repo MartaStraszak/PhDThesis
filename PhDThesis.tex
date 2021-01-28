@@ -1,0 +1,85 @@
+
+
+\documentclass[10pt, a4paper, twoside,openright]{report} 
+\usepackage[textwidth=15cm]{geometry}
+\include{Packages}
+\newcommand{\s}[1]{\underline{#1}=\{#1_n\}_{n=0}^{\infty}}
+\newcommand{\seq}[2]{\{#1_{#2}\}_{#2=0}^{\infty}}
+\newcommand{\emp}[2]{\mathfrak{m}(\underline{#1},#2)}
+
+\title{Topological Dynamics of Countable Amenable Groups}
+\author{Marta Straszak}
+\date{2019}
+
+
+\begin{document}
+\pagenumbering{gobble}
+\begin{titlepage}
+\thispagestyle{empty}
+\begin{center}
+\textsf{\large Jagiellonian University\\Faculty of Mathematics and Computer Science\\Institute of Mathematics}
+\vspace{5ex}%
+
+\includegraphics[scale=0.2]{logoUJ.jpg}
+\vfill%
+
+ %\vspace{2ex}%
+
+{\textbf{\fontsize{20}{30}\selectfont   Topological Dynamics of Countable Amenable Groups\\}}
+\vspace{5ex}%
+
+\textsf{\Large Marta Straszak\\}
+%\textsf{\large Dissertation} 
+\vfill%
+\vspace{5ex}
+
+{\large A dissertation submitted in partial fulfillment of the requirements }\\
+\vspace{1ex}
+{\large for the degree of Doctor of Philosophy}\\
+\vspace{3ex}
+{\large Thesis Supervisor: Dominik Kwietniak}\\
+
+\vfill\vfill%
+%{\textsf{\large Under supervision of Dr hab. Dominik Kwietniak}}\\
+\vfill\vfill%
+
+
+%\vspace{5ex}
+\textsf{{\large Kraków 2020}}
+\end{center}
+\end{titlepage}
+
+\cleardoublepage
+\thispagestyle{empty}
+\vspace*{0.2\textheight}
+\begin{flushright}
+  {\it%
+    to my husband Damian \\[1em]
+
+  }
+\end{flushright}
+\vfill
+
+
+\input{Chapters/Acknowledgement}
+
+\begin{abstract}
+\input{Chapters/abstrakt}
+
+\end{abstract}
+
+\tableofcontents{}
+\pagenumbering{arabic}
+	
+\input{Chapters/Introduction}
+\input{Chapters/Preliminaries}
+\input{Chapters/MinimalSubsystems}
+\input{Chapters/WeylPseudometric}
+\input{Chapters/Quasi-UniformConvergence}
+\input{Chapters/SubordinateShifts}
+\input{Chapters/Quasi-ToeplitzConfigurations}
+\input{Chapters/RealizabilityOfEntropy}
+
+\bibliographystyle{plain}
+\bibliography{Chapters/biblio}
+\end{document}
