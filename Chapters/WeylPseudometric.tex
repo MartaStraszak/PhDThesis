@@ -106,7 +106,7 @@ Define $N\defeq \max\{N_f: f\in F\}$. Then for every $n\geq N$ we have
 
 \begin{figure}\label{fig:F-hull}
 \centering
-\includegraphics[scale=1]{../Graphics/E_hat_densities}
+\includegraphics[scale=1]{Graphics/E_hat_densities.pdf}
 \caption{An illustration for Lemma \ref{lem:hatE-E}. We can see a set $E\in\Fin(G)$ (the interior of the area marked with the fat line) and the set $\widehat E$ defined in Lemma \ref{lem:hatE-E}  (the grey area). The set $\widehat E$ is the sum of shifted copies of $F$ that intersect $E$ (a copy of $F$ is depicted as a single square). }
 \end{figure}
 \noindent 
@@ -368,7 +368,7 @@ Since $K$ is finite, for $n\in\N$ large enough and for every $h\in K$ one has (s
 \]
 Consequently, for all $n\in\N$ large enough and any $h\in K$ we have (for the second inequality we use \eqref{eq:alfa_plus_beta} and the fact that $\rho(x,z)\leq 1$ for $x,z\in X$)
 \[
-{1\over |F_{k_n}|} \sum_{f\in hF_{k_n}} \rho(\und x(f),\und z(f)) \geq {1\over | F_{k_n}|} \sum_{f\in F_{k_n}} \rho(\und x(f),\und z(f)) - {1\over |F_{k_n}|} \sum_{f\in F_{k_n}\setminus hF_{k_n}} \rho(\und x(f),\und z(f)) > \beta.
+\frac{1}{|F_{k_n}|} \sum_{f\in hF_{k_n}} \rho(\und x(f),\und z(f)) \geq \frac{1}{| F_{k_n}|} \sum_{f\in F_{k_n}} \rho(\und x(f),\und z(f)) - \frac{1}{|F_{k_n}|} \sum_{f\in F_{k_n}\setminus hF_{k_n}} \rho(\und x(f),\und z(f)) > \beta.
 \]
 Therefore
 \[
@@ -457,7 +457,7 @@ then $H$ is $G$-invariant and satisfies Shearer's inequality.
 
 \begin{proof}Notice that $G$-invariance follows directly from the definition of $H$. To show that it satisfies Shearer's inequality take $F\in\Fin(G)$ and let $(K_1,\ldots,K_r)$ be a $k$-cover of $F$. Every element of $F$ belongs to $K_i$ for at least $k$ indices $i\in\{1,2,\ldots,r\}$, hence
 \begin{align*}
-{1\over k}\inparen{H(K_1)+\ldots +H(K_r)} &\geq \frac{1}{k} \sup_{g\in G}\inparen{\sum_{f\in K_1g} \rho (\und{x}(f),\und{z}(f))+\ldots+\sum_{f\in K_rg} \rho (\und{x}(f),\und{z}(f))}
+\frac{1}{k}\inparen{H(K_1)+\ldots +H(K_r)} &\geq \frac{1}{k} \sup_{g\in G}\inparen{\sum_{f\in K_1g} \rho (\und{x}(f),\und{z}(f))+\ldots+\sum_{f\in K_rg} \rho (\und{x}(f),\und{z}(f))}
 \\
 &\geq   \frac{1}{k}\sup_{g\in G}\inparen{k \sum_{f\in Fg} \rho (\und{x}(f),\und{z}(f))} %= \sup_{g\in G} \Delta_{Fg}
 = H(F). \qedhere

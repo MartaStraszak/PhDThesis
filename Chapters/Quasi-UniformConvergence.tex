@@ -148,7 +148,7 @@ is a refinement of a cover $\mathcal U^{F_n}$.
 Hence,
 \begin{align*}
 \mathcal N\left(\mathcal U^{F_n}\right)\leq\mathcal N(\mathcal W)&\leq \big|\big\{K\subseteq F_n\,:\,|K|>|F_n|(1-\delta)\big\}\big| |Z| |\mathcal U|^{|F_n|\delta}\\
-&=\sum_{k=0}^{\lfloor |F_n|\delta\rfloor}{| F_n| \choose k}|Z| |\mathcal U|^{|F_n|\delta}\\
+&=\sum_{k=0}^{\lfloor |F_n|\delta\rfloor}\binom{| F_n|}{k}|Z| |\mathcal U|^{|F_n|\delta}\\
 &\leq 2^{|F_n|H(\delta)} \spn(n,\eps,\delta) |\mathcal U|^{|F_n|\delta}.
 \end{align*}
 This implies (\ref{e1}). Finally, observe that $H(\delta)\to 0$ as $\delta\to 0$ and thus
@@ -326,7 +326,7 @@ Now, define an equivalence relation on $Y$ as follows, for $F\subseteq G$ one ha
 \[
 y\sim_F z \quad\text{ if and only if }\quad y_{F} = z_{F}.
 \]
-Elements of $Y/\sim_{F}$ denote by $z_{[F]}$. Finally, choose $A_{l,n}$ ($\l,n\in\N$) to be a set of representatives of $Y/\sim_{S_{l,n}}$. Thus, in other words, $A_{l,n}$ ($l,n\in\N$) is a set satisfying the following two properties:
+Elements of $Y/\sim_{F}$ denote by $z_{[F]}$. Finally, choose $A_{l,n}$ ($l,n\in\N$) to be a set of representatives of $Y/\sim_{S_{l,n}}$. Thus, in other words, $A_{l,n}$ ($l,n\in\N$) is a set satisfying the following two properties:
 \begin{itemize}
 \item for every $z_{[S_{l,n}]}\in Y/\sim_{S_{l,n}}$ there is $y\in A_{l,n}$ such that $y\in z_{[S_{l,n}]}$,
 \item if $y,z\in A_{l,n}$, then $y_{[S_{l,n}]}\neq z_{[S_{l,n}]}$.
@@ -382,7 +382,7 @@ $D^*(x,z)<\delta$, then for all $g\in G$ and all $n\in\N$ large enough we have
 \] 
 By Lemma~\ref{newtSumEstim} we have that for all $n\in\N$ large enough
 \begin{equation*}
-|\lang_{F_n}(z)|\leq |\lang_{F_n}(x)||\alf|^{\delta|F_n|}\sum_{k=0}^{\lfloor \delta n\rfloor}{|F_n|\choose k} 
+|\lang_{F_n}(z)|\leq |\lang_{F_n}(x)||\alf|^{\delta|F_n|}\sum_{k=0}^{\lfloor \delta n\rfloor}\binom{|F_n|}{k} 
 \leq|\alf|^{\delta|F_n|} 2^{H(\delta) |F_n|} |\lang_{F_n}(x)|.
 \end{equation*}
 Thus, using formula \eqref{eq:entropyB_Fn}, we obtain
